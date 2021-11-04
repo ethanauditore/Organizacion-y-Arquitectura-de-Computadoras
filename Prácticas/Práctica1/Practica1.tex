@@ -1,0 +1,78 @@
+\documentclass[answers]{exam}
+
+\usepackage[spanish]{babel}
+\usepackage{lmodern}
+
+\newcommand{\materia}{Organización y Arquitectura de Computadoras}
+\newcommand{\tarea}{
+  Practica 1: Medidas de desempeño
+}
+
+\title{
+  \huge \materia{} \\[0.5cm]
+  \LARGE \tarea{}
+}
+
+\author{
+  José Ethan Ortega González, 316088327 \\
+  Etzael Iván Sosa Hedding, 316259305
+}
+
+\decimalpoint{}
+
+\renewcommand{\solutiontitle}{\noindent\textbf{Solución:}\par\noindent}
+\renewcommand{\questionlabel}{\alph{question}.}
+\runningheadrule{}
+\runningheader{Fundamentos de Bases de Datos}{Tarea 1}{\date{\today}}
+\footer{}{Página \thepage\ de \numpages}{}
+
+\begin{document}
+\maketitle{}
+\thispagestyle{headandfoot}
+
+\begin{questions}
+  \question{¿Cuál computadora tiene el mejor tiempo de ejecución? Comparada con
+    la computadora con la peor medida de tiempo de ejecución ¿por qué factor es
+    mejor la computadora? Enuncia el resultado de la forma ``El tiempo de
+    ejecución de la computadora $A$ es $x$ veces \makebox[1in]{\hrulefill{}} que
+    la computadora $B$''.}
+  \begin{solution}
+    La computadora con \textit{mejor tiempo de ejecución} es la computadora
+    $PCO$. El tiempo de ejecución de la computadora $PC0$ es $2.39$ veces más
+    rápida que la $PC1$.
+  \end{solution}
+
+  \question{¿Cuál computadora tiene el mejor rendimiento? Comparada con la
+    computadora con el peor desempeño ¿por qué factor es mejor la computadora?
+    Enuncia el resultado de la forma ``El rendimiento de la computadora $A$ es $x$
+    veces \makebox[1in]{\hrulefill{}} que la computadora $B$''.}
+  \begin{solution}
+    La computadora con \textit{mejor rendimiento} es la computadora $PC0$. El
+    rendimiento de la computadora $PC0$ es $5.95$ mayor que la $PC1$.
+  \end{solution}
+
+  \question{¿Qué computadoras gana utilizando la media geométrica?}
+  \begin{solution}
+    $PC0$
+  \end{solution}
+
+  \question{¿Son las mismas que las que obtuviste con la otra media?}
+  \begin{solution}
+    Sí, son las mismas.
+  \end{solution}
+
+  \question{¿Cuál computadora tiene el mejor desempeño para el usuario planteado
+    en el caso de uso?}
+  \begin{solution}
+    La $PC0$.
+  \end{solution}
+
+  \question{De entre los atributos de cada máquina comparada, ¿cuáles resultan
+    determinantes en la pérdida o ganancia de desempeño?}
+  \begin{solution}
+    Por el procesador (ya que la $PC0$ tiene uno más actual en términos de
+    mercado) y por la memoria RAM (pues la $PC0$ cuenta con casi el doble de
+    campacidad).
+  \end{solution}
+\end{questions}
+\end{document}
