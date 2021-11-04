@@ -1,0 +1,151 @@
+\documentclass[answers]{exam}
+
+\usepackage{amsmath}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{lmodern}
+\usepackage{wrapfig}
+
+\decimalpoint{}
+
+\extrawidth{1.04cm}
+\extraheadheight[2.5cm]{-5mm}
+\renewcommand{\familydefault}{\sfdefault}
+\graphicspath{{./Imagenes/}}
+
+\newcommand{\materia}{Organización y Arquitectura \\ de Computadoras}
+\newcommand{\tarea}{Tarea 2}
+\newcommand{\titulo}{}
+\newcommand{\fecha}{28 de Octubre de 2021}
+
+\firstpageheader{
+  \setlength{\intextsep}{2.2em}
+  \begin{wrapfigure}{l}{3.3cm}
+    \centering
+    \includegraphics[scale=0.08]{fc}
+  \end{wrapfigure}
+  \hfill\break{} \\[3.5mm]
+  \LARGE\textbf{\materia: \tarea} \\
+  \large\textbf{Facultad de Ciencias, UNAM} \\[4pt]
+  \textbf{José Ethan Ortega González: }316088327 \\
+  \textbf{Etzael Iván Sosa Hedding: }316259305 \\
+}{}{
+  \setlength{\intextsep}{-9.8em}
+  \begin{wrapfigure}{l}{3.3cm}
+    \centering
+    \includegraphics[scale=0.13]{unam}
+  \end{wrapfigure}
+}
+
+\renewcommand{\solutiontitle}{\noindent\textbf{Solución:}\par\noindent}
+\renewcommand{\thequestion}{\textbf{\arabic{question}}}
+\runningheadrule{}
+\runningfootrule{}
+\firstpagefootrule{}
+\runningheader{\materia}{\tarea}{\fecha}
+\footer{}{Página \thepage\ de \numpages}{}
+
+\hypersetup{colorlinks=true,urlcolor=blue}
+
+\begin{document}
+\thispagestyle{headandfoot}
+\begin{questions}
+  \question{La Arquitectura de Computadoras se dedica unicamente al estudio de
+    las instrucciones de una computadora y su desempeño respecto a estas ¿si,
+    no? Argumenta tu respuesta.}
+  \begin{solution}
+    Siendo estrictos, no. La arquitectura de computadoras se encarga de entender
+    el funcionamiento de las computadoras y todo lo que esto involucra:
+    \begin{itemize}
+      \item Lo que llamamos arquitectura de la computadora no es otra cosa sino
+            el cómo se encuentran distribuidos y relacionados los componentes de
+            la máquina y qué ventajas o desventajas nos aporta tal diseño, como
+            ya vimos con la arquitectura de Von Neuman o de Harvard
+      \item Por otra parte, se estudia el hardware de la computadora (la
+            memoria, el CPU, el cómo están relacionados los dispositivos
+            internos y externos) y su relación con el desempeño de la misma (la
+            memoria que tiene y cuánta información se puede almacenar, el tiempo
+            que se requiere para realizar ciertas operaciones, las limitaciones
+            que tiene, entre otras).
+      \item Tampoco podemos dejar de lado el evidente interés por el estudio
+            histórico de la computación pues resulta relevante para entender las
+            posibilidades del desarrollo tecnológico, las limitantes actuales y
+            cómo podemos mejorar las condiciones actuales.
+      \item Por último sí resulta vital comprender el desempeño de una
+            computadora pues en la mayoría de los casos buscamos optimizar en
+            tiempo y espacio todo lo computable, es decir, queremos minimizar el
+            gasto de recursos para cada tarea, por más pequeña que esta sea y de
+            esta forma encontrar mejores y más seguras soluciones a los
+            problemas que se presentan.
+    \end{itemize}
+  \end{solution}
+
+  \question{¿Los registros son dispositivos de hardware que permiten almacenar
+    cualquier valor en binario? Argumenta tu respuesta.}
+  \begin{solution}
+    Cualquier valor binario siempre y cuando no exceda la capacidad del
+    registro. Existen registros con diferentes capacidades (en bits) y pueden
+    contener datos en lenguaje binario entre 4 y 64 bits. Los registros se
+    encuentran dentro de los procesadores y generalmente almacenan información
+    muy utilizada que es necesario consultar de forma rápida.
+  \end{solution}
+
+
+  \question{De los dos tipos de arquitecturas, RISC y CISC.\@ ¿Cuál de las dos
+    requiere un mayor numero de instrucciones para realizar una tarea? ¿Por qué
+    crees que así sea?}
+  \begin{solution}
+    La arquitectura RISC requiere más instrucciones. Si bien RISC son las siglas
+    para Reduced Instruction Set Computing, la naturaleza misma de la
+    arquitectura intenta simplificar las instrucciones, por lo que tareas
+    complejas se pueden convertir en muchas tareas más simples (aunque sólo se
+    necesita un ciclo de reloj para ejecutar cada instrucción). Por su parte,
+    CISC que son las siglas para Complex Instruction Set Computing es una
+    arquitectura que no se preocupa si tiene instrucciones muy complejas aunque
+    puedan tardar más tiempo.
+  \end{solution}
+
+  \question{¿En una arquitectura CISC el periodo de una señal de reloj puede ser
+    más grande que en una arquitectura RISC?}
+  \begin{solution}
+    Es cierto que las instrucciones de una arquitectura CISC pueden tomar más de
+    un ciclo de reloj porque deja de interesarse por los ciclos de una
+    instrucción para hacer un código reducido.
+  \end{solution}
+
+  \question{Un programa tiene $1 \times 10^{8}$ instrucciones y se ejecuta en un procesador
+    a 5GHz, el 40\% de las instrucciones del programa tarda 2 ciclos de reloj, el
+    40\% tarda 4 y el 20\% restante 5 ciclos. ¿Cuánto tiempo tarda el programa?}
+  \begin{solution}
+    Primero calculamos el $40\%$ y el $20\%$ de las $1 \times 10^{8}$ instrucciones:
+    \begin{align*}
+      1 \times 10^{8} \cdot 0.4 &= 40 \times 10^{6} \\
+      1 \times 10^{8} \cdot 0.2 &= 20 \times 10^{6}
+    \end{align*}
+    Después utilizamos la ecuación fundamental de desempeño con cada uno de los
+    ciclos e instrucciones:
+    \begin{align*}
+      T_{p} &= \left(\frac{(40 \times 10^{6}) \times 2}{5 \times 10^{9}}\right)
+              + \left(\frac{(40 \times 10^{6}) \times 4}{5 \times 10^{9}}\right)
+              + \left(\frac{(20 \times 10^{6}) \times 5}{5 \times 10^{9}}\right) \\
+            &= 0.016 + 0.032 + 0.02 = 0.068
+    \end{align*}
+    Por lo que el tiempo del programa es $0.068$ segundos o $69$ mili-segundos.
+  \end{solution}
+\end{questions}
+
+\begin{thebibliography}{99}
+  \bibitem{ejercicio1}{
+    \url{https://www.iteshu.edu.mx/reticulas_plan_2010/isc/arquitectura_de_computadoras.pdf} \\
+    \url{https://es.wikipedia.org/wiki/Arquitectura_de_computadoras}}
+  \bibitem{ejercicio2}{
+    \url{http://cv.uoc.edu/annotation/8255a8c320f60c2bfd6c9f2ce11b2e7f/619469/PID_00218272/PID_00218272.html}}
+  \bibitem{ejercicio3}{
+    \url{https://triton.astroscu.unam.mx/fruiz/introduccion/introduccion_computacion/Arquitectura%20RISC%20vs%20CISC.pdf}}
+  \bibitem{ejercicio4}{
+    \url{https://www.profesionalreview.com/2021/07/18/risc-vs-cisc/} \\
+    \url{https://hardzone.es/tutoriales/rendimiento/x86-vs-arm-consumo-energetico/}
+  }
+\end{thebibliography}
+\end{document}
