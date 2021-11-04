@@ -1,0 +1,94 @@
+\documentclass[12pt]{article}
+
+\usepackage[spanish]{babel}
+\usepackage{fancyhdr}
+
+\title{
+  \vspace{-4.0cm}
+  \huge Organización y Arquitectura de Computadoras \\[0.25cm]
+  \LARGE Práctica 0
+}
+\author{José Ethan Ortega González}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Práctica 0}
+\rhead{\today{}}
+\cfoot{Página \thepage}
+
+\begin{document}
+\maketitle{}
+Los datos de la computadora donde se hicieron las pruebas son:
+\begin{itemize}
+  \item \textbf{Fabricante y modelo:}  HP Notebook 14-bs007la.
+  \item \textbf{Fabricante, modelo, frecuencia, número de núcleos y arquitectura
+        del procesador:} Intel, Celeron N3060, 2.48 GHz, 2, x86\_64.
+  \item \textbf{Capacidad de memoria RAM y de cachés de los procesadores:} 4096
+        MB, 2MB.
+  \item \textbf{Capacidad, tipo y velocidad del disco duro:} 500GB, HDD, 5400
+        RPM.
+  \item \textbf{Distribución de linux y versión del kernel:} Arch Linux,
+        5.14.7\-arch1\-1 (x86\_64).
+\end{itemize}
+Las pruebas son las siguientes:
+\begin{itemize}
+  \item \textbf{GZIP Compression:} Esta prueba mide el tiempo necesario para
+        comprimir un archivo usando GZIP. \textbf{pts/compress-gzip}
+  \item \textbf{DCRAW:} Esta prueba mide el tiempo que toma convertir varias
+        imágenes de alta resolución en formato RAW NEF a imágenes en formato
+        PPM usando dcraw. \textbf{pts/dcraw}
+  \item \textbf{FLAC Audio Encoding:} Esta prueba mide cuanto tiempo toma
+        codificar un archivo muestra de audio en formato WAV a un archivo en
+        formato FLAC. \textbf{pts/encode-flac}
+  \item \textbf{GnuPG:} Esta prueba mide el tiempo que toma encriptar un archivo
+        usando GnuPG. \textbf{pts/gnupg}
+  \item \textbf{REDIS:} Redis es un motor de bases de datos en memoria de código
+        abierto, la prueba mide el número de solicitudes que el servidor puede
+        responder por segundo. \textbf{pts/redis}
+  \item \textbf{Timed MAFFT Alignment:} Esta prueba mide el tiempo que le toma
+        alinear 100 secuencias de piruvato descarboxilasa. \textbf{pts/mafft}
+  \item \textbf{Timed MrBayes Analysis:} Esta prueba mide el tiempo que le toma
+        realiza un analisis bayesiano de un conjunto de secuencias del genoma de
+        primates con el fin de estimar su filogenia. \textbf{pts/mrbayes}
+  \item \textbf{Timed MPlayer Compilation:} Esta prueba mide el tiempo que toma
+        compilar el reproductor MPlayer. \textbf{pts/build-mplayer}
+  \item \textbf{Timed PHP Compilation:} Esta prueba mide el tiempo que toma
+        complilar PHP 5. \textbf{pts/build-php}
+  \item \textbf{Povray:} POV-Ray se usa para crear gráficos en 3D usando
+        ray-tracing. \textbf{pts/povrayis}
+\end{itemize}
+Por ultimo, los resultados de las pruebas son los siguientes.
+\begin{center}
+  \begin{tabular}{|l|r|}
+    \hline
+    \textbf{Nombre de la Prueba} & \textbf{Resultados} \\
+    \hline
+    compress-gzip                & 108.220 \\
+    dcraw                        & 212.152 \\
+    encode-flac                  & 47.423 \\
+    gnupg                        & 176.917 \\
+    redis                        & 340948.5 \\
+    mafft                        & 92.235 \\
+    mrbayes                      & 1080 \\
+    build-mplayer                & 964.465 \\
+    build-php                    & 1017 \\
+    povray                       & 1418.00 \\
+    \hline
+  \end{tabular}
+\end{center}
+En el caso de Redis, la unidad de medida son \textit{Request per Second} y el
+resultado es el promedio de las siguientes pruebas:
+\begin{center}
+  \begin{tabular}{|l|r|}
+    \hline
+    \textbf{Nombre de la Prueba} & \textbf{Resultados} \\
+    \hline
+    LPOP                         & 405859 \\
+    SADD                         & 304727 \\
+    LPUSH                        & 218838 \\
+    GET                          & 406134 \\
+    SET                          & 282365 \\
+    \hline
+  \end{tabular}
+\end{center}
+\end{document}
