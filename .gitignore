@@ -4,6 +4,6 @@
 tmp/
 *.aux
 *.log
-*.syntex*
+*.synctex*
 _region_.tex
 *.auctex*
