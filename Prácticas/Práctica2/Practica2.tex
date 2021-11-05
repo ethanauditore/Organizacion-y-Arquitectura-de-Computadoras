@@ -1,0 +1,364 @@
+\documentclass[answers]{exam}
+
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{karnaugh-map}
+\usepackage{lmodern}
+\usepackage{multicol}
+\usepackage{wrapfig}
+
+\extrawidth{1.04cm}
+\extraheadheight[2.5cm]{-5mm}
+\renewcommand{\familydefault}{\sfdefault}
+\graphicspath{{./Imagenes/}}
+
+\newcommand{\materia}{Organización y \\ Arquitectura de Computadoras}
+\newcommand{\tarea}{Práctica 2}
+\newcommand{\titulo}{Circuitos Combinacionales}
+\newcommand{\fecha}{28 de Octubre de 2021}
+
+\firstpageheader{
+  \setlength{\intextsep}{2.2em}
+  \begin{wrapfigure}{l}{3.3cm}
+    \centering
+    \includegraphics[scale=0.08]{fc}
+  \end{wrapfigure}
+  \hfill\break{} \\[3.5mm]
+  \LARGE\textbf{\materia} \\
+  \large\textbf{Facultad de Ciencias, UNAM} \\[4pt]
+  \textbf{José Ethan Ortega González: }316088327 \\
+  \textbf{Etzael Iván Sosa Hedding: }316259305 \\
+}{}{
+  \setlength{\intextsep}{-9.8em}
+  \begin{wrapfigure}{l}{3.3cm}
+    \centering
+    \includegraphics[scale=0.13]{unam}
+  \end{wrapfigure}
+}
+
+\renewcommand{\solutiontitle}{\noindent\textbf{Solución:}\par\noindent}
+\renewcommand{\thequestion}{\textbf{\arabic{question}}}
+\runningheadrule{}
+\runningfootrule{}
+\firstpagefootrule{}
+\runningheader{\materia}{\tarea: \titulo}{\fecha}
+\footer{}{Página \thepage\ de \numpages}{}
+
+\begin{document}
+\section{Procedimiento}
+\begin{questions}
+  \question{Construye las 3 compuertas básicas: Not, Or y And. Para corroborar
+    la funcionalidad de sus compuertas, deberán construir circuitos para simular
+    las siguientes funciones. Sólo puedes hacer uso de fuentes de alimentación
+    power y ground, transistores, resistencias y pines de entrada y salida.
+    \begin{enumerate}
+      \item $A \leftrightarrow B$
+      \item $A \oplus B$
+    \end{enumerate}}
+  \begin{solution}
+    \begin{itemize}
+      \item \textbf{NOT:} Para este circuito pensamos en dejar pasar la
+            corriente de la fuente en un caso y bloquearla en el otro,
+            auxiliándonos de un elemento tierra para indicar el 0. Utilizamos un
+            transistor de tipo P que deja pasar la corriente cuando recibe un 0
+            y uno de tipo N que está abierto cuando recibe un 1. Es claro que
+            necesitamos uno de cada tipo para que siempre haya uno abierto y
+            deje pasar la información deseada.
+      \item \textbf{AND:} Como necesitamos que ambas entradas sean 1, ponemos 2
+            transistores de tipo N para que dejen pasar la corriente de la
+            fuente de poder al ser 1 ambos pues si no fueran iguales no pasaría
+            la corriente ni tampoco pueden ser ambos de tipo P porque esas se
+            cierran al ser 1. Sin embargo, también es necesario poner una
+            resistencia para que por defecto tengamos un 0, ya que si ambas
+            entradas son 0 no pasa nada y estaría indeterminada la salida.
+      \item \textbf{OR:} Aquí necesitamos 2 transistores de tipo N para que
+            dejen pasar la corriente cuando sean 1 pero necesitamos un
+            transistor con 0 para que por defecto (cuando ambas entradas sean 0)
+            se muestre un 0. Aquí con que una entrada sea 1 se permite pasar la
+            corriente, en AND se tenía que dejar pasar la corriente por un
+            transistor y luego por otro, aquí no ocurre eso, son independientes.
+      \item \textbf{XOR:} Se evalúa a 1 cuando las entradas son distintas, por
+            lo que utilizamos la definición que es la (negación de A y B) y (A o
+            B) por lo que utilizamos los anteriores circuitos.
+      \item \textbf{Equivalencia:} Como la tabla de verdad de XOR y la
+            equivalencia son opuestas, basta con negar XOR.\@
+    \end{itemize}
+  \end{solution}
+
+  \question{Construye un circuito que resuelva las situaciones que se piden.
+    Debes hacer uso de las compuertas que construiste en el ejercicio anterior.
+    \begin{enumerate}
+      \item Indicar si un número $n$ es primo, con $n \in {0, \ldots, 15}$.
+      \item Simular la siguiente función y reduce mediante mintérminos y
+            maxtérminos. Agrega ambos circuitos.
+            \begin{gather*}
+              \begin{array}{|c|c|c|c|}
+                \hline
+                E3 & E2 & E1 & F \\
+                \hline
+                0 & 0 & 0 & 1 \\
+                0 & 0 & 1 & 1 \\
+                0 & 1 & 0 & 0 \\
+                0 & 1 & 1 & 1 \\
+                1 & 0 & 0 & 0 \\
+                1 & 0 & 1 & 1 \\
+                1 & 1 & 0 & 0 \\
+                1 & 1 & 1 & 0 \\
+                \hline
+              \end{array}
+            \end{gather*}
+    \end{enumerate}}
+  \begin{solution}
+    \begin{enumerate}
+      \item Primero identificamos los números primos del $0$ al $15$ e hicimos
+            una tabla de verdad de $4$ variables para poder representar los
+            números. Para cada número primo el resultado de la función $F$ será
+            evaluada a $1$, en otro caso se evalúa a $0$. La tabla se muestra a
+            continuación
+            \begin{gather*}
+              \begin{array}{|c|c|c|c|c|}
+                \hline
+                x_{0} & x_{1} & x_{2} & x_{3} & F \\
+                \hline
+                0     & 0     & 0     & 0     & 0 \\
+                0     & 0     & 0     & 1     & 0 \\
+                0     & 0     & 1     & 0     & 1 \\
+                0     & 0     & 1     & 1     & 1 \\
+                0     & 1     & 0     & 0     & 0 \\
+                0     & 1     & 0     & 1     & 1 \\
+                0     & 1     & 1     & 0     & 0 \\
+                0     & 1     & 1     & 1     & 1 \\
+                1     & 0     & 0     & 0     & 0 \\
+                1     & 0     & 0     & 1     & 0 \\
+                1     & 0     & 1     & 0     & 0 \\
+                1     & 0     & 1     & 1     & 1 \\
+                1     & 1     & 0     & 0     & 0 \\
+                1     & 1     & 0     & 1     & 1 \\
+                1     & 1     & 1     & 0     & 0 \\
+                1     & 1     & 1     & 1     & 0 \\
+                \hline
+              \end{array}
+            \end{gather*}
+            Apoyándonos en la tabla de verdad, obtuvimos la siguiente función:
+            \begin{gather*}
+              F(x_{1}, x_{2}, x_{3}, x_{4}) =%
+              \overline{x_{1}}\;\overline{x_{2}}x_{3}\overline{x_{4}} +%
+              \overline{x_{1}}\;\overline{x_{2}}x_{3}x_{4} +%
+              \overline{x_{1}}x_{2}\overline{x_{3}}x_{4} +%
+              \overline{x_{1}}x_{2}x_{3}x_{4} +%
+              x_{1}\overline{x_{2}}x_{3}x_{4} +%
+              x_{1}x_{2}\;\overline{x_{3}}x_{4}
+            \end{gather*}
+            Podemos utilizar un mapa de Karnaugh para simplificar la función:
+            \begin{center}
+              \begin{karnaugh-map}[4][4][1][$x_{0}x_{1}$][$x_{2}x_{3}$]
+                \minterms{2,3,5,7,11,13}
+                \autoterms[0]
+                \implicant{5}{7}
+                \implicant{5}{13}
+                \implicant{3}{2}
+                \implicantedge{3}{3}{11}{11}
+              \end{karnaugh-map}
+            \end{center}
+            Del mapa de Karnaugh, obtenemos la siguiente función:
+            \begin{gather*}
+              F(x_{1}, x_{2}, x_{3}, x_{4}) =%
+              x_{1}\overline{x_{2}}x_{3} + \overline{x_{0}}x_{1}x_{3} +%
+              \overline{x_{0}}\;\overline{x_{1}}x_{2} + \overline{x_{1}}x_{2}x_{3}
+            \end{gather*}
+            Basta con representar la función $F$ en un circuito para resolver el
+            ejercicio.
+      \item Como debemos de resolver el ejercicio con mintérminos y maxtérminos,
+            explicamos el procedimiento para ambos:
+            \begin{itemize}
+              \item Para los \textbf{mintérminos} tenemos que fijarnos en las filas de
+                    la tabla que se evalúan a 1. Cuando una entrada es 0 la
+                    denotamos con la negación y cuando es 1 la dejamos como
+                    está. Cambiaremos los nombres de las entradas por
+                    conveniencia. Sea $E3 = A, E2 = B$ y $E1 = C$. Entonces tenemos
+                    lo siguiente:
+                    \begin{align*}
+                      \overline{A}\;\;\overline{B}\;\;\overline{C} +%
+                      \overline{A}\;\;\overline{B}C + \overline{A}BC + A\overline{B}C
+                      &= \overline{A}(\overline{B}\;\overline{C} + \overline{B}C + BC)%
+                        + A\overline{B}C \tag{por distributividad} \\
+                      &= \overline{A}(\overline{B}(\overline{C} + C) + BC)%
+                        + A\overline{B}C \tag{por distributividad} \\
+                      &= \overline{A}(\overline{B} (1) + BC)%
+                        + A\overline{B}C \tag{por complemento} \\
+                      &= \overline{A}(\overline{B} + BC)%
+                        + A\overline{B}C \tag{por identidad} \\
+                      &= \overline{A}\;\overline{B} + \overline{A}BC%
+                        + A\overline{B}C \tag{por distributividad}
+                    \end{align*}
+              \item Para los maxtérminos tenemos que fijarnos en las filas de
+                    la tabla que se evalúan a 0. Cuando una entrada es 1 la
+                    denotamos con la negación y cuando es 0 la dejamos como
+                    está. Entonces tenemos lo siguiente:
+                    \begin{gather*}
+                      (A + \overline{B} + C)(\overline{A} + B + C)(\overline{A} +%
+                      \overline{B} + C)(\overline{A} + \overline{B} + \overline{C})
+                    \end{gather*}
+                    Sea D $= \overline{B} + C$. Entonces tenemos:
+                    \begin{gather*}
+                      (A + D)(\overline{A} + B + C)(\overline{A} + D)(\overline{A} +%
+                      \overline{B} + \overline{C})
+                    \end{gather*}
+                    Por conmutatividad tenemos:
+                    \begin{gather*}
+                      (A + D)(\overline{A} + D)(\overline{A} + B + C)(\overline{A} +%
+                      \overline{B} + \overline{C})
+                    \end{gather*}
+                    Por distributividad:
+                    \begin{gather*}
+                      (\overline{A}(A + D) + D(A + D))(\overline{A} + B + C)(\overline{A}%
+                      + \overline{B} + \overline{C})
+                    \end{gather*}
+                    Por distributividad:
+                    \begin{gather*}
+                      (\overline{A}A + \overline{A}D + DA + DD)(\overline{A} + B +%
+                      C)(\overline{A} + \overline{B} + \overline{C})
+                    \end{gather*}
+                    Por complemento y por idempotencia:
+                    \begin{gather*}
+                      (0 + \overline{A}D + DA + D)(\overline{A} + B + C)(\overline{A} +%
+                      \overline{B} + \overline{C})
+                    \end{gather*}
+                    Por identidad y por conmutatividad:
+                    \begin{gather*}
+                      (D\overline{A} + DA + D)(\overline{A} + B + C)(\overline{A} +%
+                      \overline{B} + \overline{C})
+                    \end{gather*}
+                    Por distributividad y por complemento:
+                    \begin{gather*}
+                      (D(\overline{A} + A) + D)(\overline{A} + B + C)(\overline{A} +%
+                      \overline{B} + \overline{C}) = (D(1) + D)(\overline{A} + B +%
+                      C)(\overline{A} + \overline{B} + \overline{C})
+                    \end{gather*}
+                    Por identidad, por idempotencia y sustituyendo D:
+                    \begin{gather*}
+                      (D)(\overline{A} + B + C)(\overline{A} + \overline{B} +%
+                      \overline{C}) = (\overline{B} + C)(\overline{A} + B +%
+                      C)(\overline{A} + \overline{B} + \overline{C})
+                    \end{gather*}
+            \end{itemize}
+    \end{enumerate}
+  \end{solution}
+
+  \question{En una planta de manejo de residuos tóxicos cuentan con la mejor
+    tecnología para tratar desechos peligrosos y mantener a sus trabajadores
+    seguros. Una parte fundamental de su sistema de protección consta de tres
+    filtros que mantienen la toxicidad del área prácticamente nula. Sin embargo
+    estos filtros pueden fallar, lo que volvería nocivo permanecer en la planta.
+    Con la finalidad de monitorear el estado de los filtros, estos tienen un
+    sensor que indica si es que el filtro esta fallando o no. Si uno de los
+    filtros falla es posible trabajar con normalidad pero es necesario notificar
+    al servicio técnico para que lo reparen a la brevedad. En caso de que fallen
+    dos, la planta puede seguir trabajando pero los empleados se deben retirar
+    mas temprano. Finalmente, si es que fallan los 3, sera necesario activar el
+    protocolo de alerta y evacuar inmediatamente la planta. Se necesita un
+    mecanismo que indique la cantidad de filtros que fallan para que puedan
+    tomar las acciones pertinentes según sea el caso.}
+  \begin{solution}
+    Para poder representar el problema de la planta, lo que hicimos fue crear un
+    circuito con tres entrada y tres salidas; si ninguna de las salidas está
+    encendida, entonces ningún filtro está averiado y todo puede transcurrir con
+    normalidad; si la primer salida está encendida, entonces exactamente un
+    filtro de los tres que hay está averiado, por lo que se puede trabajar con
+    normalidad, pero se debe de notificar al servicio técnico; si la segunda
+    salida está encendida, entonces exactamente dos filtros están averiados, por
+    lo que se puede trabajar con normalidad pero los trabajadores se deben de
+    retirar más temprano; si la tercer salida está encendida, entonces los tres
+    filtros están averiados, por lo que se activa el protocolo de alerta se
+    activa y todos deben de evacuar.
+
+    Para implementar esto, hicimos una tabla de verdad de tres variables y tres
+    funciones de conmutación $F_{1}, F_{2}, F_{3}$ donde cada función
+    corresponde a cada salida y el número de radares averiados; es decir,
+    $F_{1}$ verifica si un radar está averiado y se conecta a la primer salida,
+    $F_{2}$ verifica si dos radares estén averiados y se conecta a la segunda
+    salida y $F_{3}$ verifica si tres radares están averiados y se conecta a la
+    tercer salida. La tabla de verdad y las funciones de conmutación se muestran
+    a continuación:
+
+    \begin{minipage}{0.5\textwidth}
+      \begin{gather*}
+        \text{\textbf{Tabla de verdad:}} \\
+        \begin{array}{|c|c|c|c|c|c|}
+          \hline
+          x & y & z & F_{1} & F_{2} & F_{3} \\
+          \hline
+          0 & 0 & 0 & 0 & 0 & 0 \\
+          0 & 0 & 1 & 1 & 0 & 0 \\
+          0 & 1 & 0 & 1 & 0 & 0 \\
+          0 & 1 & 1 & 0 & 1 & 0 \\
+          1 & 0 & 0 & 1 & 0 & 0 \\
+          1 & 0 & 1 & 0 & 1 & 0 \\
+          1 & 1 & 0 & 0 & 1 & 0 \\
+          1 & 1 & 1 & 0 & 0 & 1 \\
+          \hline
+        \end{array}
+      \end{gather*}
+    \end{minipage}
+    \begin{minipage}{0.3\textwidth}
+      \textbf{Funciones de conmutación:}
+      \begin{align*}
+        F_{1}(x, y, z) &= \overline{x}\;\overline{y}z + \overline{x}b\overline{c}%
+                         + a\overline{b}\;\overline{c} \\
+        F_{2}(x, y, z) &= \overline{x}yz + x\overline{b}c + ab\overline{c} \\
+        F_{3}(x, y, z) &= abc
+      \end{align*}
+    \end{minipage}
+  \end{solution}
+\end{questions}
+\section{Preguntas}
+\begin{questions}
+  \question{¿Cuál es el procedimiento a seguir para desarrollar un circuito que
+    resuelva un problema que involucre lógica combinacional?}
+  \begin{solution}
+    \begin{itemize}
+      \item \textbf{Paso 1:} Entender y plantear el problema en términos de
+            lógica combinacional, es decir, poner el problema en términos de 0's
+            y 1's; saber cuándo cierta entrada nos debe dar una salida en
+            particular.
+      \item \textbf{Paso 2:} Aunque es opcional, es buena idea hacer una tabla
+            de verdad para visualizar todas las posibles combinaciones de la
+            entrada y las posibles salidas.
+      \item \textbf{Paso 3:} Convertir los resultados de la tabla a una función
+            de conmutación.
+      \item \textbf{Paso 4:} Aunque podría ser parte del paso 3, es importante
+            minimizar con algún método, ya sea mediante minitérminos,
+            maxitérminos o mapas de Karnaugh, según convenga.
+      \item \textbf{Paso 5:} Implementar los circuitos necesarios para el
+            problema.
+      \item \textbf{Paso 6:} Asegurarse de que funciona para cada
+            combinación de la entrada.
+    \end{itemize}
+  \end{solution}
+
+  \question{Si una función de conmutación se evalúa a más ceros que unos ¿es
+    conveniente usar mintérminos o maxtérminos? ¿En el caso que se evalúe a más
+    unos que ceros?}
+  \begin{solution}
+    Si una función se evalúa a más ceros que unos conviene utilizar minitérminos
+    porque así nos tenemos que fijar únicamente en los resultados que se evalúan
+    a unos (que son menos). En el caso contrario podemos utilizar maxitérminos
+    que se enfocan en los resultados evaluados a cero.
+  \end{solution}
+
+  \question{Analizando el trabajo realizado, ¿cuáles son los inconvenientes de
+    desarrollar los circuitos de forma manual?}
+  \begin{solution}
+    \begin{itemize}
+      \item Si el problema no se entiende bien es muy fácil diseñar algo erróneo
+            o hecho para alguna otra situación diferente de la que nos
+            solicitan.
+      \item Mientras más entradas o combinaciones tengamos más complejo se
+            vuelve el diseño y por lo tanto más difícil se vuelve encontrar
+            alguna falla o incluso se puede hacer confusa su implementación.
+    \end{itemize}
+  \end{solution}
+\end{questions}
+\end{document}
