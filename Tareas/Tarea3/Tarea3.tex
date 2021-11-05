@@ -1,0 +1,152 @@
+\documentclass[answers]{exam}
+
+\usepackage{amsmath}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{wrapfig}
+
+\decimalpoint{}
+
+\extrawidth{1.04cm}
+\extraheadheight[3.5cm]{-5mm}
+\renewcommand{\familydefault}{\sfdefault}
+\graphicspath{{../../Imagenes/}}
+
+\newcommand{\materia}{Organización y \\ Arquitectura de Computadoras}
+\newcommand{\tarea}{Tarea 3}
+\newcommand{\titulo}{Lógica Digital}
+\newcommand{\fecha}{28 de Octubre de 2021}
+
+\firstpageheader{
+  \setlength{\intextsep}{2.2em}
+  \begin{wrapfigure}{l}{3.7cm}
+    \centering
+    \includegraphics[scale=0.09]{fc}
+  \end{wrapfigure}
+  \hfill\break{} \\[3.5mm]
+  \LARGE\textbf{\materia} \\
+  \LARGE\textbf{\tarea: \titulo} \\[4pt]
+  \large\textbf{Facultad de Ciencias, UNAM} \\[4pt]
+  \textbf{José Ethan Ortega González:} 316088327 \\
+  \textbf{Etzael Iván Sosa Hedding:} 316259305 \\
+}{}{
+  \setlength{\intextsep}{-12.5em}
+  \begin{wrapfigure}{l}{3.3cm}
+    \centering
+    \includegraphics[scale=0.15]{unam}
+  \end{wrapfigure}
+}
+
+\renewcommand{\solutiontitle}{\noindent\textbf{Solución:}\par\noindent}
+\renewcommand{\thequestion}{\textbf{\arabic{question}}}
+\runningheadrule{}
+\runningfootrule{}
+\firstpagefootrule{}
+\runningheader{\materia}{\tarea}{\fecha}
+\footer{}{Página \thepage\ de \numpages}{}
+
+\begin{document}
+\begin{questions}
+  \question{Da la dualidad de $x \cdot y = x + y$ y verifica la igualdad respecto a
+    esta.}
+  \begin{solution}
+    Aquí va la solución.
+  \end{solution}
+
+  \question{Demuestra si la siguiente igualdad es valida:
+    $x(\overline{x} + y) = xy$.}
+  \begin{solution}
+    Aquí va la solución.
+  \end{solution}
+
+  \question{Demuestra si la siguiente igualdad es valida:
+    $(x + y)(\overline{x} + z)(y + z) = (x + y)(\overline{x} + z)$.}
+  \begin{solution}
+    Aquí va la solución.
+  \end{solution}
+
+  \question{Demuestra si la siguiente igualdad es valida:
+    $\overline{x \cdot y} = \overline{x} \cdot \overline{y}$.}
+  \begin{solution}
+    Aquí va la solución.
+  \end{solution}
+
+  \question{Verifica la siguiente igualdad usando los postulados de Huntington.
+    \[
+      F(x,y,z) = x + x(\overline{x}+y)+\overline{x}y= x+y
+    \]} \vspace{-2em}
+  \begin{solution}
+    Aquí va la solución.
+  \end{solution}
+
+  \question{Obtén los maxitérminos y mintérminos de la siguiente función.
+    \[
+      F(x, y, z) = \overline{x} \cdot \overline{y} \cdot \overline{z} \cdot x +%
+      \overline{z} \cdot x + z \cdot x + y \cdot \overline{y} + \overline{z}
+    \]} \vspace{-2em}
+  \begin{solution}
+    Aquí va la solución.
+  \end{solution}
+
+  \question{Simplifica la siguiente función usando su tabla de verdad asociada.
+    \[
+      F(x, y, z) = \overline{xyz} + \overline{xy}z + \overline{x}y\overline{z}%
+      + x\overline{yz} + \overline{x}yz + x\overline{y}z + xyz
+    \]} \vspace{-2em}
+  \begin{solution}
+    Aquí va la solución.
+  \end{solution}
+
+  \question{Expande la siguiente función y da su maxitérminos.
+    \[
+      F(x, y, z) = (x + \overline{x}z) \cdot (\overline{y} + \overline{z}) \cdot z
+    \]} \vspace{-2em}
+  \begin{solution}
+    Aquí va la solución.
+  \end{solution}
+
+  \question{Utilizando Mapas de Karnaugh simplifica la función.
+    \[
+      F(x_0, x_1, x_2, x_3) = \overline{x_0 x_1 x_2 x_3} + \overline{x_0 x_1%
+        x_2}x_3 + \overline{x_0 x_1 }x_2 x_3 + x_0 \overline{x_1 }x_2 x_3 + x_0%
+      x_1\overline{ x_2 x_3} + \overline{x_0}x_1\overline{ x_2 x_3}+ x_0 x_1 x_2 x_3
+    \]} \vspace{-2em}
+  \begin{solution}
+    Aquí va la solución.
+  \end{solution}
+
+  \question{Para realizar una Mapa de Karnaugh con más de 5 variables se
+    menciono que existe más de una forma de representarlo.
+
+    Investiga ambos métodos y utiliza el que más se te acomode para reducir la
+    siguiente función.
+    \begin{align*}
+      F(x_0, x_1, x_2, x_3, x_4)
+      =&\;\overline{x_0 x_1 x_2 x_3 x_4} + \overline{x_0 x_1 x_2}x_3 \overline{x_4}
+         + \overline{x_0 x_1 }x_2 x_3 \overline{x_4} + x_0 \overline{x_1 }x_2 x_3 x_4 \\
+       &+ x_0 x_1\overline{ x_2 x_3} x_4 + \overline{x_0}x_1\overline{ x_2 x_3}x_4
+         + x_0 x_1 x_2 x_3 x_4
+    \end{align*}} \vspace{-2em}
+  \begin{solution}
+    Aquí va la solución.
+  \end{solution}
+
+  \question{A lo largo del capitulo abordamos los postulados de Huntington y sus
+    demostraciones, pero existe un principio llamado Principio de Dualidad, el
+    cual nos permite formalizar que a toda relación o ley lógica le
+    corresponderá su dual, formada mediante el intercambio de los operadores
+    unión (suma lógica) con los de intersección (producto lógico), y de los 1
+    con los 0.
+
+    Con esta definición indica cual es la expresión dual de:
+    \begin{parts}
+      \part{$x \cdot 0 = 0$}
+      \part{$x(x + y) = x$}
+    \end{parts}}
+  \begin{solution}
+    Aquí va la solución.
+  \end{solution}
+\end{questions}
+\end{document}
