@@ -4,13 +4,15 @@
 \usepackage[spanish]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
+\usepackage{karnaugh-map}
+\usepackage{kvmap}
 \usepackage{lmodern}
 \usepackage{wrapfig}
 
 \decimalpoint{}
 
 \extrawidth{1.04cm}
-\extraheadheight[3.5cm]{-5mm}
+\extraheadheight[3cm]{-5mm}
 \renewcommand{\familydefault}{\sfdefault}
 \graphicspath{{../../Imagenes/}}
 
@@ -58,27 +60,70 @@
   \question{Demuestra si la siguiente igualdad es valida:
     $x(\overline{x} + y) = xy$.}
   \begin{solution}
-    Aquí va la solución.
+    La demostración es la siguiente:
+    \begin{align*}
+      x(\overline{x} + y) &= (x\overline{x}) + xy && \text{Por Distributividad} \\
+                          &= 0 + xy && \text{Por Complemento} \\
+                          &= xy && \text{Por Identidad}
+    \end{align*}
   \end{solution}
 
   \question{Demuestra si la siguiente igualdad es valida:
     $(x + y)(\overline{x} + z)(y + z) = (x + y)(\overline{x} + z)$.}
   \begin{solution}
-    Aquí va la solución.
+    \begin{align*}
+      (x + y)(\overline{x} + z)(y + z)
+      &= [(x + y)\overline{x} + (x + y)z](y + z) C \\
+      &= [(x\overline{x} + y\overline{x}) + (xz + yz)](y + z) && \text{Por Distributividad} \\
+      &= [0 + y\overline{x} + xz + yz](y + z) && \text{Por Complemento} \\
+      &= (y\overline{x} + xz + yz)(y + z) && \text{Por Identidad} \\
+      &= y\overline{x}(y + z) + xz(y + z) + yz(y + z) && \text{Por Distributividad} \\
+      &= y\overline{x}y + y\overline{x}z + xzy + xzz + yzy + yzz && \text{Por Distributividad} \\
+      &= yy\overline{x} + y\overline{x}z + xzy + xzz + yyz + yzz && \text{Por Conmutatividad} \\
+      &= y\overline{x} + y\overline{x}z + xzy + xz + yz && \text{Por Idempotencia} \\
+      &= \overline{x}zy + xzy + y\overline{x} + xz + yz && \text{Por Conmutatividad} \\
+      &= (\overline{x} + x)zy + y\overline{x} + xz + yz && \text{Por Distributividad} \\
+      &= zy + y\overline{x} + xz + yz && \text{Por Complemento} \\
+      &= yz + y\overline{x} + xz + yz && \text{Por Conmutatividad} \\
+      &= yz + y\overline{x} + xz && \text{Por Idempotencia} \\
+      &= yz + y\overline{x} + xz + 0 && \text{Por Identidad} \\
+      &= yz + y\overline{x} + xz + (x\overline{x}) && \text{Por Complemento} \\
+      &= (\overline{x}x) + \overline{x}y + zx + zy && \text{Por Conmutatividad} \\
+      &= \overline{x}(x + y) + z(x + y) && \text{Por Distributividad} \\
+      &=(x + y)(\overline{x} + z) && \text{Por Distributividad}
+    \end{align*}
   \end{solution}
 
   \question{Demuestra si la siguiente igualdad es valida:
     $\overline{x \cdot y} = \overline{x} \cdot \overline{y}$.}
   \begin{solution}
-    Aquí va la solución.
+    No es valida, mostremos un contraejemplo. Cuando $x=0, y=1$, por un lado
+    tenemos lo siguiente:
+    \begin{gather*}
+      \overline{x \cdot y} = \overline{0 \cdot 1} = \overline{0} = 1
+    \end{gather*}
+    Por el otro, tenemos lo siguiente:
+    \begin{gather*}
+      \overline{x} \cdot \overline{y} = \overline{0} \cdot \overline{1}
+      = 1 \cdot 0 = 0
+    \end{gather*}
   \end{solution}
 
   \question{Verifica la siguiente igualdad usando los postulados de Huntington.
     \[
-      F(x,y,z) = x + x(\overline{x}+y)+\overline{x}y= x+y
+      F(x,y,z) = x+x(\overline{x}+y)+\overline{x}y = x+y
     \]} \vspace{-2em}
   \begin{solution}
-    Aquí va la solución.
+    La solución es la siguiente:
+    \begin{align*}
+      x+x(\overline{x}+y)+\overline{x}y = x+y
+      &= x+x\overline{x}+xy+\overline{x}y = x+y && \text{P4a} \\
+      &= x+0+xy+\overline{x}y = x+y && \text{P5b} \\
+      &= x+xy+\overline{x}y = x+y && \text{P2a} \\
+      &= x+y(x+\overline{x}) = x+y && \text{P4a} \\
+      &= x+y \cdot 1 = x+y && \text{P5a} \\
+      &= x+y = x+y && \text{P2b}
+    \end{align*}
   \end{solution}
 
   \question{Obtén los maxitérminos y mintérminos de la siguiente función.
@@ -87,7 +132,58 @@
       \overline{z} \cdot x + z \cdot x + y \cdot \overline{y} + \overline{z}
     \]} \vspace{-2em}
   \begin{solution}
-    Aquí va la solución.
+    \begin{align*}
+      \overline{x} \cdot \overline{y} \cdot \overline{z} \cdot x +%
+      \overline{z} \cdot x + z \cdot x + y \cdot \overline{y} + \overline{z}
+      &= x \cdot \overline{x} \cdot \overline{y} \cdot \overline{z} +%
+        \overline{z} \cdot x + z \cdot x + y \cdot \overline{y} + \overline{z}%
+      && \text{Por Conmutatividad} \\
+      &= 0 \cdot \overline{y} \cdot \overline{z} +%
+        \overline{z} \cdot x + z \cdot x + 0 + \overline{z} && \text{Por Complemento} \\
+      &= \overline{z} \cdot x + z \cdot x + 0 + \overline{z} && \text{Por Aniquilación} \\
+      &= \overline{z} \cdot x + z \cdot x + \overline{z} && \text{Por Identidad} \\
+      &=  x \cdot \overline{z} + x \cdot z + \overline{z} && \text{Por Conmutatividad} \\
+      &=  x (\overline{z} + z) + \overline{z} && \text{Por Distributividad} \\
+      &=  x \cdot 1 + \overline{z} && \text{Por Complemento} \\
+      &=  x + \overline{z} && \text{Por Identidad} \\
+    \end{align*}
+    La tabla de la expresión al reducirla es la siguiente:
+    \begin{gather*}
+      \begin{array}{|c|c|c|c|}
+        \hline
+        x & z & \overline{z} & x + \overline{z} \\
+        \hline
+        0 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 1 & 1 \\
+        0 & 1 & 1 & 1 \\
+        1 & 0 & 0 & 1 \\
+        1 & 1 & 0 & 1 \\
+        1 & 0 & 1 & 1 \\
+        1 & 1 & 1 & 1 \\
+        \hline
+      \end{array}
+    \end{gather*}
+    \begin{itemize}
+      \item \textbf{Minitérminos:} Recordemos que los minitérminos se fijan en
+            las filas que se evalúan a 1 y se niegan los 0. Así, tenemos lo
+            siguiente:
+      \begin{align*}
+        \overline{x} \cdot \overline{z} + x \cdot \overline{z} + x \cdot z
+        &= \overline{z} \cdot \overline{x} + \overline{z} \cdot x + x \cdot z
+        &&\text{Por Conmutatividad}\\
+        &= \overline{z}(\overline{x} + x) + xz &&\text{Por Distributividad}\\
+        &= \overline{z} \cdot 1 + xz &&\text{Por Complemento}\\
+        &= \overline{z} + xz
+      \end{align*}
+      \item \textbf{Maxitérminos:} Recordemos que los maxitérminos se fijan en
+            las filas que se evalúan a 0 y se niegan los 1. Así, tenemos lo
+            siguiente:
+      \begin{align*}
+        x + \overline{z}
+      \end{align*}
+    \end{itemize}
+
   \end{solution}
 
   \question{Simplifica la siguiente función usando su tabla de verdad asociada.
@@ -96,7 +192,24 @@
       + x\overline{yz} + \overline{x}yz + x\overline{y}z + xyz
     \]} \vspace{-2em}
   \begin{solution}
-    Aquí va la solución.
+    La tabla es la siguiente:
+    \begin{gather*}
+      \begin{array}{|c|c|c|c|c|c|c|c|c|c|c|}
+        \hline
+        x & y & z & \overline{xyz} & \overline{xy}z & \overline{x}y\overline{z} &
+        x\overline{yz} & \overline{x}yz & x\overline{y}z & xyz & F \\
+        \hline
+        0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 1 & 1 & 1 & 1 & 0 & 0 & 1 & 0 & 0 & 0 \\
+        1 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+        1 & 0 & 1 & 1 & 1 & 0 & 1 & 0 & 1 & 0 & 0 \\
+        1 & 1 & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+        1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+        \hline
+      \end{array}
+    \end{gather*}
   \end{solution}
 
   \question{Expande la siguiente función y da su maxitérminos.
@@ -130,7 +243,16 @@
          + x_0 x_1 x_2 x_3 x_4
     \end{align*}} \vspace{-2em}
   \begin{solution}
-    Aquí va la solución.
+    \begin{center}
+      \begin{kvmap}
+        \kvlist{8}{4}
+        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,}
+        {x_{2},x_{3},x_{4},x_{0},x_{1}}
+        \bundle[color=red]{1}{1}{1}{2}
+        \bundle{3}{2}{2}{3}
+        \bundle[color=blue,reducespace=3pt]{3}{2}{3}{1}
+      \end{kvmap}
+    \end{center}
   \end{solution}
 
   \question{A lo largo del capitulo abordamos los postulados de Huntington y sus
@@ -146,7 +268,10 @@
       \part{$x(x + y) = x$}
     \end{parts}}
   \begin{solution}
-    Aquí va la solución.
+    \begin{itemize}
+      \item Por el Principio de Dualidad, la expresión es: $x+1=1$
+      \item Por el Principio de Dualidad, la expresión es: $x+(xy)=x$
+    \end{itemize}
   \end{solution}
 \end{questions}
 \end{document}
