@@ -217,7 +217,34 @@
       F(x, y, z) = (x + \overline{x}z) \cdot (\overline{y} + \overline{z}) \cdot z
     \]} \vspace{-2em}
   \begin{solution}
-    Aquí va la solución.
+    Primero desarrollemos la función:
+
+    \begin{align*}
+      F(x, y, z) &= (x + \bar{x}z)(\bar{y} + \bar{z})z\\
+                 &= (x + \bar{x}z)(\bar{y}z + \bar{z}z) \tag{por Distributividad}\\
+                 &= (x + \bar{x}z)(\bar{y}z + 0) \tag{por Complemento}\\
+                 &= (x + \bar{x}z)\bar{y}z \tag{por identidad}\\
+                 &= (x\bar{y}z + \bar{x}z\bar{y}z) \tag{por Distributividad}\\
+                 &= (x\bar{y}z + \bar{x}\bar{y}zz) \tag{por Conmutatividad}\\
+                 &= (x\bar{y}z + \bar{x}\bar{y}z) \tag{por Idempotencia}\\
+                 &= (\bar{y}xz + \bar{y}\bar{x}z) \tag{por Conmutatividad}\\
+                 &= \bar{y}(xz + \bar{x}z) \tag{por Distributividad}\\
+                 &= \bar{y}(x + \bar{x})z \tag{por Distributividad}\\
+                 &= \bar{y}(1)z \tag{por Complemento}\\
+                 &= \bar{y}z \tag{por Identidad}
+    \end{align*}
+    Ahora veamos los Maxitérminos. Como ya dijimos, nos debemos fijar en las
+    filas de la tabla de verdad que se evalúan a 0 y negar los 1 que aparezcan
+    en cada variable. Notemos que no necesitamos ver la tabla para ver que hay 3
+    filas que se evalúan a 0 (pues es una conjunción). En particular, las filas
+    evaluadas a 0 son cuando $\bar{y}$ se evalúa a 0 y cuando $\bar{y}$ se
+    evalúa a 1 y z se evalúa a 0. Entonces tenemos lo siguiente:
+    \begin{align*}
+      \bar{y}\bar{z} + \bar{y}z + yz &= \bar{y}(\bar{z} + z) + yz
+                                       \tag{por Distributividad}\\
+                                     &= \bar{y}(1) + yz \tag{por Complemento}\\
+                                     &= \bar{y} + yz \tag{por Identidad}
+    \end{align*}
   \end{solution}
 
   \question{Utilizando Mapas de Karnaugh simplifica la función.
