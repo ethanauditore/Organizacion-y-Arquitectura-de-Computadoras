@@ -1,0 +1,83 @@
+\documentclass[answers]{exam}
+
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+
+\extrawidth{1.04cm}
+\extraheadheight[2.5cm]{-5mm}
+\renewcommand{\familydefault}{\sfdefault}
+\graphicspath{{../../Imagenes/}}
+
+\newcommand{\materia}{Organización y \\ Arquitectura de Computadoras}
+\newcommand{\tarea}{Práctica 2}
+\newcommand{\titulo}{Circuitos Combinacionales}
+\newcommand{\fecha}{28 de Octubre de 2021}
+
+\firstpageheader{
+  \setlength{\intextsep}{2.2em}
+  \begin{wrapfigure}{l}{3.3cm}
+    \centering
+    \includegraphics[scale=0.08]{fc}
+  \end{wrapfigure}
+  \hfill\break{} \\[3.5mm]
+  \LARGE\textbf{\materia} \\
+  \large\textbf{Facultad de Ciencias, UNAM} \\[4pt]
+  \textbf{José Ethan Ortega González: }316088327 \\
+  \textbf{Etzael Iván Sosa Hedding: }316259305 \\
+}{}{
+  \setlength{\intextsep}{-9.8em}
+  \begin{wrapfigure}{l}{3.3cm}
+    \centering
+    \includegraphics[scale=0.13]{unam}
+  \end{wrapfigure}
+}
+
+\renewcommand{\solutiontitle}{\noindent\textbf{Solución:}\par\noindent}
+\renewcommand{\thequestion}{\textbf{\arabic{question}}}
+\runningheadrule{}
+\runningfootrule{}
+\firstpagefootrule{}
+\runningheader{\materia}{\tarea: \titulo}{\fecha}
+\footer{}{Página \thepage\ de \numpages}{}
+
+\begin{document}
+\begin{questions}
+  \question{¿Qué operaciones aritméticas y lógicas son básicas para un
+    procesador?}
+  \begin{solution}
+    Un procesador necesita únicamente 3 operaciones lógicas (AND, OR, NOT)
+    pues con estas basta para realizar cualquier otra operación lógica. Por otro
+    lado, con una suma y un comparador (saber si es menor, mayor o igual un par
+    de números) es suficiente para las operaciones aritméticas pues la resta
+    puede verse como una suma y otras operaciones aritméticas se pueden ver como
+    sumas (multiplicación, división, etc.).
+
+    Sin embargo, otras fuentes consideran las siguientes como las operaciones
+    básicas de un procesador: AND, OR, NOT, suma, resta, multiplicación,
+    división e inverso.
+  \end{solution}
+
+  \question{El diseño utilizado para realizar la adición resulta ser
+    ineficiente, ¿por qué?
+
+    ¿Qué tipo de sumador resulta ser más eficiente?}
+  \begin{solution}
+    En primer lugar, tener un semisumador puede resultar más complejo,
+    dándonos un nuevo nivel de abstracción al necesitar un semisumador para
+    realizar un sumador general. Es claro también que para un ALU de 8 bits
+    necesitamos 8 sumadores previamente realizados correctamente y para ALUs de
+    más bits el número de sumadores aumenta, haciendo confuso y ``revuelta'' la
+    solución. Debemos mencionar también el ``Overflow'' o desbordamiento, que es
+    el acarreo que presenta el sumador si la suma de nuestras dos entradas
+    necesita más bits de los que tenemos para ser representada. Esto es
+    importante porque de no considerarse, los programas pueden presentar fallos
+    importantes, por ejemplo, el famoso videojuego Pacman utilizaba 8 bits para
+    el número del nivel en el que se encuentra el jugador y al llegar al nivel
+    255 se presentaban una serie de errores que hacían imposible pasar al nivel
+    256 (un número binario con 9 bits).
+\end{solution}
+\end{questions}
+\end{document}
