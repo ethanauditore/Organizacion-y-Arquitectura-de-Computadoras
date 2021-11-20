@@ -13,6 +13,7 @@
 
 \extrawidth{1.04cm}
 \extraheadheight[3cm]{-5mm}
+\extrafootheight[-5mm]{-2mm}
 \renewcommand{\familydefault}{\sfdefault}
 \graphicspath{{../../Imagenes/}}
 
@@ -54,7 +55,9 @@
   \question{Da la dualidad de $x \cdot y = x + y$ y verifica la igualdad respecto a
     esta.}
   \begin{solution}
-    Aquí va la solución.
+    Por el teorema de dualidad, el dual de $\cdot$ es $+$, por lo tanto, el dual de
+    $x \cdot y$ es $x+y$. Un argumento similar se puede seguir para el dual de
+    $x+y$.
   \end{solution}
 
   \question{Demuestra si la siguiente igualdad es valida:
@@ -132,6 +135,7 @@
       \overline{z} \cdot x + z \cdot x + y \cdot \overline{y} + \overline{z}
     \]} \vspace{-2em}
   \begin{solution}
+    La solución es la siguiente:
     \begin{align*}
       \overline{x} \cdot \overline{y} \cdot \overline{z} \cdot x +%
       \overline{z} \cdot x + z \cdot x + y \cdot \overline{y} + \overline{z}
@@ -254,8 +258,28 @@
       x_1\overline{ x_2 x_3} + \overline{x_0}x_1\overline{ x_2 x_3}+ x_0 x_1 x_2 x_3
     \]} \vspace{-2em}
   \begin{solution}
-    Aquí va la solución.
+    El mapa es el siguiente:
+
+    \begin{minipage}{0.4\linewidth}
+      \begin{karnaugh-map}[4][4][1][$x_{2}x_{3}$][$x_{0}x_{1}$]
+        \minterms{0,1,3,11,12,4,15}
+        \autoterms[0]
+        \implicant{4}{12}
+        \implicant{15}{11}
+        \implicant{0}{1}
+        \implicant{1}{3}
+      \end{karnaugh-map}
+    \end{minipage}
+    \begin{minipage}{0.6\linewidth}
+      Del mapa de Karnaugh, obtenemos la siguiente función:
+      \begin{align*}
+        F(x_{0}, x_{1}, x_{2}, x_{3}) = \overline{x_{0}x_{1}x_{2}} + \overline{x_{0}x_{1}}x_{3}
+        + x_{1}\overline{x_{2}x_{3}} + x_{0}x_{2}x_{3}
+      \end{align*}
+    \end{minipage}
   \end{solution}
+
+  \newpage{}
 
   \question{Para realizar una Mapa de Karnaugh con más de 5 variables se
     menciono que existe más de una forma de representarlo.
@@ -269,18 +293,6 @@
        &+ x_0 x_1\overline{ x_2 x_3} x_4 + \overline{x_0}x_1\overline{ x_2 x_3}x_4
          + x_0 x_1 x_2 x_3 x_4
     \end{align*}} \vspace{-2em}
-  \begin{solution}
-    \begin{center}
-      \begin{kvmap}
-        \kvlist{8}{4}
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,}
-        {x_{2},x_{3},x_{4},x_{0},x_{1}}
-        \bundle[color=red]{1}{1}{1}{2}
-        \bundle{3}{2}{2}{3}
-        \bundle[color=blue,reducespace=3pt]{3}{2}{3}{1}
-      \end{kvmap}
-    \end{center}
-  \end{solution}
 
   \question{A lo largo del capitulo abordamos los postulados de Huntington y sus
     demostraciones, pero existe un principio llamado Principio de Dualidad, el
