@@ -56,6 +56,38 @@
     \item $p \land q \lor r \to q$
     \item $((p \to q) \land (q \to r)) \to (p \to r)$
   \end{itemize}
+  \begin{solution}
+    Para poder construir los diagramas lógicos de las expresiones, primero
+    creamos los siguientes diagramas auxiliares:
+    \begin{itemize}
+      \item $p \to q$
+            \begin{center}
+              \includegraphics[scale=0.9]{equiv}
+            \end{center}
+      \item $p \leftrightarrow q$
+            \begin{center}
+              \includegraphics[scale=0.9]{impl}
+            \end{center}
+    \end{itemize}
+    \begin{itemize}
+      \item $\neg(p \land q) \leftrightarrow \neg p \lor \neg q$
+            \begin{center}
+              \includegraphics[scale=0.9]{ejercicio1.1}
+            \end{center}
+      \item $p \lor (p \land q) \leftrightarrow p$
+            \begin{center}
+              \includegraphics[scale=0.9]{ejercicio1.2}
+            \end{center}
+      \item $p \land q \lor r \to q$
+            % \begin{center}
+            %   \includegraphics[scale=0.9]{ejercicio1.3}
+            % \end{center}
+      \item $((p \to q) \land (q \to r)) \to (p \to r)$
+            \begin{center}
+              \includegraphics[scale=0.9]{ejercicio1.4}
+            \end{center}
+    \end{itemize}
+  \end{solution}
 
   \question{Dibuje los diagramas lógicos para AND, OR y NOT usando compuertas
     NAND.}
