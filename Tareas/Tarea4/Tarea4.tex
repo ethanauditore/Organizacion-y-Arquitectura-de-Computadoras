@@ -69,6 +69,33 @@
   \question{En base al circuito anterior, da su tabla de verdad asociada. ¿Puede
     este circuito utilizarse como una compuerta NAND y también como una
     compuerta NOR?\@ En caso de ser afirmativa la respuesta, justifíquela.}
+  \begin{solution}
+    No puede ser utilizada como una compuerta NOR, solo puede ser utilizada como
+    una compuerta NAND.\@ Sea $F$ la salida del circuito del ejercicio, la tabla
+    de verdad del circuito y del NAND de $4$ bits:
+    \begin{gather*}
+      \begin{array}{c|c|c|c|c|c}
+        x & y & w & z & F & NAND \\
+        \hline
+        0 & 0 & 0 & 0 & 1 & 1 \\
+        0 & 0 & 0 & 1 & 1 & 1 \\
+        0 & 0 & 1 & 0 & 1 & 1 \\
+        0 & 0 & 1 & 1 & 1 & 1 \\
+        0 & 1 & 0 & 0 & 1 & 1 \\
+        0 & 1 & 0 & 1 & 1 & 1 \\
+        0 & 1 & 1 & 0 & 1 & 1 \\
+        0 & 1 & 1 & 1 & 1 & 1 \\
+        1 & 0 & 0 & 0 & 1 & 1 \\
+        1 & 0 & 0 & 1 & 1 & 1 \\
+        1 & 0 & 1 & 0 & 1 & 1 \\
+        1 & 0 & 1 & 1 & 1 & 1 \\
+        1 & 1 & 0 & 0 & 1 & 1 \\
+        1 & 1 & 0 & 1 & 1 & 1 \\
+        1 & 1 & 1 & 0 & 1 & 1 \\
+        1 & 1 & 1 & 1 & 0 & 0 \\
+      \end{array}
+    \end{gather*}
+  \end{solution}
 
   \question{Dibuje los diagramas lógicos de las siguientes funciones. En caso de
     que la función no sea óptima, utilice el método a conveniencia visto en la
