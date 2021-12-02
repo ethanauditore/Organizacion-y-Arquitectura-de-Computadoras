@@ -103,34 +103,41 @@
   \begin{center}
     \includegraphics[scale=0.5]{circuito}
   \end{center}
+  \begin{solution}
+    El diagrama es el siguiente:
+    \begin{center}
+      \includegraphics[scale=0.8]{ejercicio3}
+    \end{center}
+  \end{solution}
 
   \question{En base al circuito anterior, da su tabla de verdad asociada. ¿Puede
     este circuito utilizarse como una compuerta NAND y también como una
     compuerta NOR?\@ En caso de ser afirmativa la respuesta, justifíquela.}
   \begin{solution}
-    No puede ser utilizada como una compuerta NOR, solo puede ser utilizada como
-    una compuerta NAND.\@ Sea $F$ la salida del circuito del ejercicio, la tabla
-    de verdad del circuito y del NAND de $4$ bits:
+    Si es posible usarla como compuerta NAND y como compuerta NOR.\@ Para la
+    compuerta NOR basta con usar las entradas $w$ y $z$, no importa el valor de
+    $x$ y $y$.
+
     \begin{gather*}
-      \begin{array}{c|c|c|c|c|c}
-        x & y & w & z & F & NAND \\
+      \begin{array}{c|c|c|c|c}
+        x & y & w & z & F \\
         \hline
-        0 & 0 & 0 & 0 & 1 & 1 \\
-        0 & 0 & 0 & 1 & 1 & 1 \\
-        0 & 0 & 1 & 0 & 1 & 1 \\
-        0 & 0 & 1 & 1 & 1 & 1 \\
-        0 & 1 & 0 & 0 & 1 & 1 \\
-        0 & 1 & 0 & 1 & 1 & 1 \\
-        0 & 1 & 1 & 0 & 1 & 1 \\
-        0 & 1 & 1 & 1 & 1 & 1 \\
-        1 & 0 & 0 & 0 & 1 & 1 \\
-        1 & 0 & 0 & 1 & 1 & 1 \\
-        1 & 0 & 1 & 0 & 1 & 1 \\
-        1 & 0 & 1 & 1 & 1 & 1 \\
-        1 & 1 & 0 & 0 & 1 & 1 \\
-        1 & 1 & 0 & 1 & 1 & 1 \\
-        1 & 1 & 1 & 0 & 1 & 1 \\
-        1 & 1 & 1 & 1 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 1 \\
+        0 & 0 & 0 & 1 & 1 \\
+        0 & 0 & 1 & 0 & 1 \\
+        0 & 0 & 1 & 1 & 1 \\
+        0 & 1 & 0 & 0 & 1 \\
+        0 & 1 & 0 & 1 & 1 \\
+        0 & 1 & 1 & 0 & 0 \\
+        0 & 1 & 1 & 1 & 0 \\
+        1 & 0 & 0 & 0 & 1 \\
+        1 & 0 & 0 & 1 & 0 \\
+        1 & 0 & 1 & 0 & 1 \\
+        1 & 0 & 1 & 1 & 0 \\
+        1 & 1 & 0 & 0 & 1 \\
+        1 & 1 & 0 & 1 & 0 \\
+        1 & 1 & 1 & 0 & 0 \\
+        1 & 1 & 1 & 1 & 0 \\
       \end{array}
     \end{gather*}
   \end{solution}
@@ -178,5 +185,11 @@
 
   \question{Diseña un circuito digital que resuelva la siguiente ecuación:
     $x = 2y + z$}
+  \begin{solution}
+    El diagrama es el siguiente:
+    \begin{center}
+      \includegraphics[scale=0.8]{ejercicio10}
+    \end{center}
+  \end{solution}
 \end{questions}
 \end{document}
