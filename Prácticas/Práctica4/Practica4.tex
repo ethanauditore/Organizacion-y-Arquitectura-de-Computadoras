@@ -1,0 +1,104 @@
+\documentclass[answers]{exam}
+
+\usepackage{amsmath}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{minted}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+
+\extrawidth{1.04cm}
+\extraheadheight[2.5cm]{-5mm}
+\renewcommand{\familydefault}{\sfdefault}
+\graphicspath{{../../Imagenes/}}
+
+\newcommand{\materia}{Organización y \\ Arquitectura de Computadoras}
+\newcommand{\tarea}{Práctica 4}
+\newcommand{\titulo}{Lógica Secuencial}
+\newcommand{\fecha}{28 de Octubre de 2021}
+
+\firstpageheader{
+  \setlength{\intextsep}{2.2em}
+  \begin{wrapfigure}{l}{3.3cm}
+    \centering
+    \includegraphics[scale=0.08]{fc}
+  \end{wrapfigure}
+  \hfill\break{} \\[3.5mm]
+  \LARGE\textbf{\materia} \\
+  \large\textbf{Facultad de Ciencias, UNAM} \\[4pt]
+  \textbf{José Ethan Ortega González: }316088327 \\
+  \textbf{Etzael Iván Sosa Hedding: }316259305 \\
+}{}{
+  \setlength{\intextsep}{-9.8em}
+  \begin{wrapfigure}{l}{3.3cm}
+    \centering
+    \includegraphics[scale=0.13]{unam}
+  \end{wrapfigure}
+}
+
+\renewcommand{\solutiontitle}{\noindent\textbf{Solución:}\par\noindent}
+\renewcommand{\thequestion}{\textbf{\arabic{question}}}
+\runningheadrule{}
+\runningfootrule{}
+\firstpagefootrule{}
+\runningheader{\materia}{\tarea: \titulo}{\fecha}
+\footer{}{Página \thepage\ de \numpages}{}
+
+\begin{document}
+\begin{questions}
+  \question{Un registro de desplazamiento es un circuito secuencial que desplaza
+    a la izquierda o a la derecha la información contenida en el. Considerando
+    el desplazamiento de $1$ bit a la izquierda, ¿cómo se implementa dicho
+    circuito? ¿Cómo podríamos simular su funcionamiento con las operaciones
+    que se tienen en la ALU de $8$ bits?}
+  \begin{solution}
+    Para implementarlo es muy sencillo, solo tenemos que conectar $n$ flip-flops
+    de tipo D, donde la entrada del primero puede elegirse y su salida es la
+    entrada del siguiente flip-flop, y el reloj está conectado a todos en
+    paralelo. Es más conocida como SIPO (Serial Input Parallel Output). Para
+    poder simular el funcionamiento con nuestra ALU, simplemente necesitamos
+    sumar y restar mediante el siguiente algoritmo:
+
+    \begin{quote}
+      Sean $\{n,\ldots,1\}$ los indices de los dígitos en el registro. Buscamos el
+      $1$ con mayor indice $k$ y a todo el número le sumamos otro número cuyo
+      único $1$ está en la posición $k + 1$, y luego restamos un número cuyo
+      único número está en la posición $k$. Repetimos el algoritmo desde $k - 1$
+      hasta $1$. Esto nos da un desplazamiento a la izquierda introduciendo un
+      $0$, si queremos introducir un $1$ hacemos exactamente lo mismo y le
+      sumamos un $1$ al final.
+    \end{quote}
+  \end{solution}
+
+  \question{Considerando el formato de instrucción para nuestro circuito
+    completo (ALU y Banco de Registros conectados) que se muestra en la Tabla
+    $1$ escribe las instrucciones necesarias para calcular las siguientes
+    operaciones (Suponga que A, B y C se encuentran en los registros 1, 2 y 3
+    respectivamente):}
+  \begin{itemize}
+    \item $2A + B - C$
+    \item $(-A \& B) \vert C$
+  \end{itemize}
+  \begin{solution}
+    \begin{itemize}
+      \item Las instrucciones son las siguientes:
+      \begin{center}
+        \begin{verbatim}
+          01100000 00000000 // Sumamos dos veces a A y lo guardamos en A
+          01100100 01000000 // Sumamos a A y B y lo guardamos en B
+          11101001 10000000 // Restamos a B y C y lo guardamos en C
+        \end{verbatim}
+      \end{center}
+      \item Las instrucciones son las siguientes:
+      \begin{center}
+        \begin{verbatim}
+          01000000 00000000 // Negamos las entradas de A y lo guardamos en A
+          00000100 01000000 // Hacemos un AND de bits con A y B y lo guardamos en B
+          00101001 10000000 // Hacemos un OR de bits con B y C y lo guardamos en C
+        \end{verbatim}
+      \end{center}
+    \end{itemize}
+  \end{solution}
+\end{questions}
+\end{document}
