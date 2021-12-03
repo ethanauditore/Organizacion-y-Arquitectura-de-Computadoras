@@ -167,15 +167,98 @@
           \begin{math}
             \begin{aligned}[t]
               F(x_{0}, x_{1}, x_{2}, x_{3}, x_{4}) =\;
-              &\overline{x_{0}x_{1}x_{2}x_{3}x_{4}} +
+              \overline{x_{0}x_{1}x_{2}x_{3}x_{4}} +
               \overline{x_{0}x_{1}}x_{2}x_{3}\overline{x_{4}} +
-              x_{0}\overline{x_{1}}x_{2}x_{3}x_{4} \\
-              &+ x_{0}x_{1}\overline{x_{2}x_{3}}x_{4}
+              x_{0}\overline{x_{1}}x_{2}x_{3}x_{4}
+              + x_{0}x_{1}\overline{x_{2}x_{3}}x_{4}
               + \overline{x_{0}}x_{1}\overline{x_{2}x_{3}}x_{4}
               + x_{0}x_{2}x_{3}x_{4}
             \end{aligned}
           \end{math}
   \end{itemize}
+  \begin{solution}
+    \begin{itemize}
+      \item Primero reducimos la expresión:
+            \begin{align*}
+              F(x_{0}, x_{1}, x_{2})
+              &= x_{0}x_{1}x_{2} + \overline{x_{0} x_{1}x_{2}} +
+                x_{0}x_{1}\overline{x_{2}} + \overline{x_{0}x_{1}}x_{2} \\
+              &= 1 + x_{0}x_{1}\overline{x_{2}} +
+                \overline{x_{0}x_{1}}x_{2} \tag{por Complemento} \\
+              &= 1 + \overline{x_{0}x_{1}}x_{2}
+                \tag{por Aniquilación} \\
+              &= 1 \tag{por Aniquilación}
+            \end{align*}
+            El diagrama se muestra a continuación:
+            \begin{center}
+              \includegraphics[scale=0.7]{ejercicio5.a}
+            \end{center}
+
+      \item Primero reducimos la expresión:
+            \begin{align*}
+              F(x_{0}, x_{1}, x_{2}, x_{3})
+              &= \overline{x_{0}x_{1}x_{2}x_{3}} + \overline{x_{0}x_{1}x_{2}}x_{3}
+                + \overline{x_{0}x_{1}}x_{2}x_{3} + x_{0}x_{1}\overline{x_{2}x_{3}}
+                + x_{0}x_{1}x_{2}\overline{x_{3}} \\
+              &= \overline{x_{0}x_{1}x_{2}} + \overline{x_{3}}
+                + \overline{x_{0}x_{1}x_{2}}x_{3} + \overline{x_{0}x_{1}}x_{2}x_{3}
+                + x_{0}x_{1}\overline{x_{2}x_{3}} + x_{0}x_{1}x_{2}\overline{x_{3}}
+                \tag{por Leyes de Morgan} \\
+              &= \overline{x_{0}x_{1}x_{2}} + \overline{x_{3}}
+                + x_{0}x_{1}x_{2}\overline{x_{3}} + \overline{x_{0}x_{1}x_{2}}x_{3}
+                + \overline{x_{0}x_{1}}x_{2}x_{3} + x_{0}x_{1}\overline{x_{2}x_{3}}
+                \tag{por Asociatividad} \\
+              &= \overline{x_{0}x_{1}x_{2}} + \overline{x_{3}}(1 + x_{0}x_{1}x_{2})
+                + \overline{x_{0}x_{1}x_{2}}x_{3} + \overline{x_{0}x_{1}}x_{2}x_{3}
+                + x_{0}x_{1}\overline{x_{2}x_{3}} \tag{por Distributividad} \\
+              &= \overline{x_{0}x_{1}x_{2}} + \overline{x_{3}}(1)
+                + \overline{x_{0}x_{1}x_{2}}x_{3} + \overline{x_{0}x_{1}}x_{2}x_{3}
+                + x_{0}x_{1}\overline{x_{2}x_{3}} \tag{por Aniquilación} \\
+              &= \overline{x_{0}x_{1}x_{2}} + \overline{x_{3}}
+                + \overline{x_{0}x_{1}x_{2}}x_{3} + \overline{x_{0}x_{1}}x_{2}x_{3}
+                + x_{0}x_{1}\overline{x_{2}x_{3}} \tag{por Identidad} \\
+              &= \overline{x_{0}x_{1}x_{2}} + (\overline{x_{3}}
+                + x_{3}\overline{x_{0}x_{1}x_{2}}) + \overline{x_{0}x_{1}}x_{2}x_{3}
+                + x_{0}x_{1}\overline{x_{2}x_{3}} \tag{por Asociatividad} \\
+              &= \overline{x_{0}x_{1}x_{2}} + \overline{x_{3}}
+                + \overline{x_{0}x_{1}x_{2}} + \overline{x_{0}x_{1}}x_{2}x_{3}
+                + x_{0}x_{1}\overline{x_{2}x_{3}} \tag{por Eliminación} \\
+              &= \overline{x_{0}x_{1}x_{2}} + \overline{x_{0}x_{1}x_{2}}
+                + \overline{x_{3}} + \overline{x_{0}x_{1}}x_{2}x_{3}
+                + x_{0}x_{1}\overline{x_{2}x_{3}} \tag{por Asociatividad} \\
+              &= \overline{x_{0}x_{1}x_{2}} + \overline{x_{3}}
+                + \overline{x_{0}x_{1}}x_{2}x_{3} + x_{0}x_{1}\overline{x_{2}x_{3}}
+                \tag{por Idempotencia} \\
+              &= \overline{x_{0}x_{1}} + \overline{x_{2}}
+                + \overline{x_{3}} + \overline{x_{0}x_{1}}x_{2}x_{3}
+                + x_{0}x_{1}\overline{x_{2}x_{3}} \tag{por Leyes de Morgan} \\
+              &= \overline{x_{0}x_{1}} + \overline{x_{0}x_{1}}x_{2}x_{3}
+                + \overline{x_{2}} + \overline{x_{3}}
+                + x_{0}x_{1}\overline{x_{2}x_{3}} \tag{por Asociatividad} \\
+              &= \overline{x_{0}x_{1}}(1 + x_{2}x_{3})
+                + \overline{x_{2}} + \overline{x_{3}}
+                + x_{0}x_{1}\overline{x_{2}x_{3}} \tag{por Distributividad} \\
+              &= \overline{x_{0}x_{1}}(1) + \overline{x_{2}}
+                + \overline{x_{3}} + x_{0}x_{1}\overline{x_{2}x_{3}}
+                \tag{por Aniquilación} \\
+              &= \overline{x_{0}x_{1}} + \overline{x_{2}}
+                + \overline{x_{3}} + x_{0}x_{1}\overline{x_{2}x_{3}}
+                \tag{por Identidad} \\
+              &= \overline{x_{0}x_{1}} + x_{0}x_{1}\overline{x_{2}x_{3}}
+                + \overline{x_{2}} + \overline{x_{3}} \tag{por Asociatividad} \\
+              &= \overline{x_{0}x_{1}} + \overline{x_{2}x_{3}}
+                + \overline{x_{2}} + \overline{x_{3}} \tag{por Absorción} \\
+              &= \overline{x_{0}x_{1}} + \overline{x_{2}x_{3}}
+                + \overline{x_{2}x_{3}} \tag{por Leyes de Morgan} \\
+              &= \overline{x_{0}x_{1}} + \overline{x_{2}x_{3}} \tag{por Idempotencia} \\
+              &= \overline{x_{0}x_{1}x_{2}x_{3}} \tag{por Leyes de Morgan}
+            \end{align*}
+            El diagrama se muestra a continuación:
+            \begin{center}
+              \includegraphics[scale=0.7]{ejercicio5.b}
+            \end{center}
+    \end{itemize}
+  \end{solution}
 
   \question{Dibuje el diagrama lógico de un sumador completo de 4 bits.}
   \begin{solution}
